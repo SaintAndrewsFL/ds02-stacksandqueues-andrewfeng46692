@@ -1,7 +1,59 @@
 
+public class StackArray<E> {
+    private E[] stack;
+    private int top;
+    private int capacity;
 
-public class StackArray {
+    public StackArray(int capacity) {
+        this.capacity = capacity;
+        this.stack = (E[]) new Object[capacity];
+        this.top = -1;
+    }
 
+    public E push(E item) {
+        if (top == capacity - 1) {
+            System.out.println("Stack is full.");
+            return null;
+        }
+        stack[++top] = item;
+        return item;
+    }
+
+    public E pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return null;
+        }
+        return stack[top--];
+    }
+
+    public E peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return null;
+        }
+        return stack[top];
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+        } else {
+            System.out.print("Stack: ");
+            for (int i = top; i >= 0; i--) {
+                System.out.print(stack[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public int size() {
+        return top + 1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
 }
 
 
